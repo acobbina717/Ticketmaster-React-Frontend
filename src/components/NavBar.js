@@ -2,20 +2,32 @@ import { IconButton } from "@mui/material";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
 import HomeIcon from "@mui/icons-material/Home";
+import PersonIcon from "@mui/icons-material/Person";
 import React, { useState } from "react";
 import { AppShell, Header, Group, Menu, useMantineTheme } from "@mantine/core";
 import { IconDoorEnter, IconAt } from "@tabler/icons";
+import { Link } from "react-router-dom";
+
 const NavBar = () => {
   // const theme = useMantineTheme();
+
   return (
     <AppShell style={{ marginBottom: 50 }}>
       <Header fixed height={50} p="md">
         <div style={{ display: "flex", alignItems: "center", height: "100%" }}>
           <Group position="left" grow style={{ flexGrow: 1 }}>
             <IconButton>
-              {/* <Link to="/" style={{ textDecoration: "none", color: "white" }}> */}
-              <HomeIcon />
-              {/* </Link> */}
+              <Link to="/" style={{ textDecoration: "none", color: "black" }}>
+                <HomeIcon />
+              </Link>
+            </IconButton>
+            <IconButton>
+              <Link
+                to="/userprofile"
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                <PersonIcon />
+              </Link>
             </IconButton>
           </Group>
 

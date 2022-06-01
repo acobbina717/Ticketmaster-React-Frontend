@@ -6,7 +6,9 @@ import {
   Group,
   Text,
   useMantineTheme,
+  FloatingTooltip,
 } from "@mantine/core";
+import { IconStar, IconMessage } from '@tabler/icons';
 
 const EventCard = ({ id, image, event_name, location, btntxt }) => {
   const theme = useMantineTheme();
@@ -28,9 +30,22 @@ const EventCard = ({ id, image, event_name, location, btntxt }) => {
           <Text weight={500}>{event_name}</Text>
         </Group>
 
+
         <Text size="sm" style={{ color: secondaryColor, lineHeight: 1.5 }}>
           {location}
         </Text>
+
+        <Group
+        position="right"
+
+        >
+          <FloatingTooltip label="Review" color="dark" position="top">
+            <IconMessage onClick={(e) => console.log("message clicked")}/>
+          </FloatingTooltip>
+          <FloatingTooltip label="Favorite" color="dark" position="top">
+            <IconStar onClick={(e) => console.log("favorite clicked")}/>
+          </FloatingTooltip>
+        </Group>
 
         <Button
           variant="light"

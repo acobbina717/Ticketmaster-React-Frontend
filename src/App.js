@@ -1,13 +1,14 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
 import Home from "./components/Home";
+import UserProfile from "./components/UserProfile";
 import Popup from "./components/Popup";
-import SignInForm from "./components/SignInForm";
-import Profile from "./components/Profile";
-import Reviews from "./components/Reviews";
+import { Routes, Route } from "react-router-dom";
+// import SignInForm from "./components/SignInForm";
 
 function App() {
   const [events, setEvents] = useState([]);
+  const [users, setUsers] = useState([]);
 
   const getEvents = () => {
     fetch("http://localhost:9292/events")
@@ -21,13 +22,26 @@ function App() {
 
   console.log(events);
 
+  const getUsers = () => {
+    fetch("http://localhost:9292/users")
+      .then((res) => res.json())
+      .then((users_data) => setUsers(users_data));
+  };
+
+  useEffect(() => {
+    getUsers();
+  }, []);
+
+  console.log(users);
+
   return (
     <>
-      {/* <Profile /> */}
-      {/* <Reviews /> */}
       {/* <Popup></Popup> */}
       {/* <SignInForm /> */}
-      <Home events={events} />
+      <Routes>
+        <Route path="/" element={<Home events={events} />} />
+        <Route path="/userprofile" element={<UserProfile users={users} />} />
+      </Routes>
     </>
   );
 }
