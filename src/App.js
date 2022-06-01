@@ -2,7 +2,9 @@ import "./App.css";
 import React, { useState, useEffect } from "react";
 import Home from "./components/Home";
 import Popup from "./components/Popup";
-// import SignInForm from "./components/SignInForm";
+import SignInForm from "./components/SignInForm";
+import Profile from "./components/Profile";
+import Reviews from "./components/Reviews";
 
 function App() {
   const [events, setEvents] = useState([]);
@@ -21,7 +23,9 @@ function App() {
 
   return (
     <>
-      <Popup></Popup>
+      {/* <Profile /> */}
+      {/* <Reviews /> */}
+      {/* <Popup></Popup> */}
       {/* <SignInForm /> */}
       <Home events={events} />
     </>
