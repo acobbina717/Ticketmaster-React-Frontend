@@ -1,11 +1,11 @@
 import EventCard from "./EventCard";
 import NavBar from "./NavBar";
 
-const Home = ({ events }) => {
+const Home = ({ events, reviews }) => {
   return (
     <>
       <NavBar />
-      <EventCard events={events} />
+      <EventCard events={events} reviews={reviews} />
     </>
   );
 };

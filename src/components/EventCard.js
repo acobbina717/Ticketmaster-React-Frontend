@@ -8,11 +8,12 @@ import {
   useMantineTheme,
 } from "@mantine/core";
 
-const EventCard = ({ events }) => {
+const EventCard = ({ events, reviews }) => {
   const theme = useMantineTheme();
 
   const secondaryColor =
     theme.colorScheme === "dark" ? theme.colors.dark[1] : theme.colors.gray[7];
+
   const eventItems = events.map((event) => {
     return (
       <Card shadow="sm" p="lg" key={event.id}>
