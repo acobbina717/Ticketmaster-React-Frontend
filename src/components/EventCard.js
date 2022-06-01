@@ -1,53 +1,64 @@
 import {
+  Grid,
   Card,
   Image,
-  Text,
-  Badge,
   Button,
   Group,
+  Text,
   useMantineTheme,
+  FloatingTooltip,
 } from "@mantine/core";
+import { IconStar, IconMessage } from '@tabler/icons';
 
-const EventCard = ({ events, reviews }) => {
+const EventCard = ({ id, image, event_name, location, btntxt }) => {
   const theme = useMantineTheme();
 
   const secondaryColor =
     theme.colorScheme === "dark" ? theme.colors.dark[1] : theme.colors.gray[7];
 
-  const eventItems = events.map((event) => {
-    return (
-      <Card shadow="sm" p="lg" key={event.id}>
+  return (
+    <Grid.Col span={4}>
+      <Card shadow="sm" p="lg" key={id}>
         <Card.Section>
-          <Image src={event.image_url} height={160} alt="Norway" />
+          <Image src={image} height={160} alt={event_name} />
         </Card.Section>
 
         <Group
           position="apart"
           style={{ marginBottom: 5, marginTop: theme.spacing.sm }}
         >
-          <Text weight={500}>{event.event_name}</Text>
-          <Badge color="pink" variant="light">
-            On Sale
-          </Badge>
+          <Text weight={500}>{event_name}</Text>
         </Group>
 
+
         <Text size="sm" style={{ color: secondaryColor, lineHeight: 1.5 }}>
-          {event.location}
+          {location}
         </Text>
+
+        <Group
+        position="right"
+
+        >
+          <FloatingTooltip label="Review" color="dark" position="top">
+            <IconMessage onClick={(e) => console.log("message clicked")}/>
+          </FloatingTooltip>
+          <FloatingTooltip label="Favorite" color="dark" position="top">
+            <IconStar onClick={(e) => console.log("favorite clicked")}/>
+          </FloatingTooltip>
+        </Group>
 
         <Button
           variant="light"
           color="blue"
           fullWidth
           style={{ marginTop: 14 }}
+          onClick={(e) => console.log(event_name)}
         >
-          Buy Ticket Now
+          {btntxt}
         </Button>
       </Card>
-    );
-  });
-
-  return <div style={{ width: 340, margin: "auto" }}>{eventItems}</div>;
+    </Grid.Col>
+  );
 };
 
 export default EventCard;

@@ -1,39 +1,68 @@
-import { AppBar, Toolbar, Stack, Button, Typography } from "@mui/material";
+import { IconButton } from "@mui/material";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import SupportAgentIcon from "@mui/icons-material/SupportAgent";
+import HomeIcon from "@mui/icons-material/Home";
+import PersonIcon from '@mui/icons-material/Person';
+import React, { useState } from "react";
+import { AppShell, Header, Group, Menu, useMantineTheme } from "@mantine/core";
+import { IconDoorEnter, IconAt } from "@tabler/icons";
+import {Link} from "react-router-dom";
+
 
 const NavBar = () => {
+  // const theme = useMantineTheme();
+
   return (
-    <div className="nav-bar">
-      <AppBar color="primary">
-        <Toolbar>
-          <Stack direction="row" spacing={1} sx={{ flexGrow: 1 }}>
-            <Typography variant="h6">Ticket Maestro</Typography>
+    <AppShell style={{ marginBottom: 50 }}>
+      <Header fixed height={50} p="md">
+        <div style={{ display: "flex", alignItems: "center", height: "100%" }}>
+          <Group position="left" grow style={{ flexGrow: 1 }}>
+            <IconButton>
+              <Link to="/" style={{ textDecoration: "none", color: "black" }}>
+              <HomeIcon />
+              </Link>
+            </IconButton>
+            <IconButton>
+              <Link to="/userprofile" style={{ textDecoration: "none", color: "black" }}>
+              <PersonIcon />
+              </Link>
+            </IconButton>
 
-            <Button variant="contained" color="secondary">
-              {/* <Link to="/" style={{ textDecoration: "none", color: "white" }}> */}
-              Home
-              {/* </Link> */}
-            </Button>
-          </Stack>
+          </Group>
 
-          <Stack direction="row" spacing={1}>
-            <Button
-              variant="contained"
-              color="secondary"
-              id="view-content-button"
+          <Group position="right">
+            <Menu
+              trigger="hover"
+              control={
+                <IconButton>
+                  <AccountCircleIcon />
+                </IconButton>
+              }
             >
-              Login
-            </Button>
+              <Menu.Item
+                icon={<IconDoorEnter />}
+                onClick={() => console.log("Login")}
+              >
+                Login
+              </Menu.Item>
+              <Menu.Item
+                icon={<IconAt />}
+                onClick={() => console.log("Register")}
+              >
+                Register
+              </Menu.Item>
+            </Menu>
 
-            <Button variant="contained" color="secondary">
+            <IconButton>
               {/* <Link
               to="/about" style={{ textDecoration: "none", color: "white" }}> */}
-              Get Help
+              <SupportAgentIcon />
               {/* </Link> */}
-            </Button>
-          </Stack>
-        </Toolbar>
-      </AppBar>
-    </div>
+            </IconButton>
+          </Group>
+        </div>
+      </Header>
+    </AppShell>
   );
 };
 
