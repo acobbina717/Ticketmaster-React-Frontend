@@ -1,6 +1,8 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
 import Home from "./components/Home";
+import Popup from "./components/Popup";
+// import SignInForm from "./components/SignInForm";
 
 function App() {
   const [events, setEvents] = useState([]);
@@ -17,7 +19,13 @@ function App() {
 
   console.log(events);
 
-  return <Home events={events} />;
+  return (
+    <>
+      <Popup></Popup>
+      {/* <SignInForm /> */}
+      <Home events={events} />
+    </>
+  );
 }
 
 export default App;

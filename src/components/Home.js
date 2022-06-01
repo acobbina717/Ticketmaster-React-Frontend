@@ -1,11 +1,11 @@
-import EventCard from "./EventCard";
+import EventContainer from "./EventContainer";
 import NavBar from "./NavBar";
 
 const Home = ({ events }) => {
   return (
     <>
       <NavBar />
-      <EventCard events={events} />
+      <EventContainer events={events} />
     </>
   );
 };

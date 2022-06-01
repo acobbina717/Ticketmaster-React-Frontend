@@ -6,16 +6,22 @@
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
     "@mantine/core": "^4.2.7",
+    "@mantine/form": "^4.2.7",
     "@mantine/hooks": "^4.2.7",
+    "@mantine/modals": "^4.2.7",
+    "@mui/icons-material": "^5.8.2",
     "@mui/material": "^5.8.2",
+    "@tabler/icons": "^1.68.0",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.2.0",
     "@testing-library/user-event": "^13.5.0",
+    "bootstrap": "^5.2.0-beta1",
     "bulma": "^0.9.4",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "zod": "^3.17.3"
   },
   "scripts": {
     "start": "react-scripts start",
