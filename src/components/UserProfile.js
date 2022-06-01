@@ -1,5 +1,6 @@
 import React from 'react'
-import { Card, Avatar, Text, Badge, Group, useMantineTheme } from '@mantine/core';
+import { Card, Avatar, Text, Group, useMantineTheme } from '@mantine/core';
+import UserUpdateButton from './UserUpdateButton';
 import NavBar from './NavBar';
 
 
@@ -28,27 +29,27 @@ function UserProfile({id, name, email, username, password, dob}) {
 
         <Group position="apart" style={{ marginBottom: 5, marginTop: theme.spacing.sm }}>
           <Text weight={500}>Eric Xiao{/*name*/}</Text>
-          <Badge color="dark" variant="light">Update</Badge>
+          <UserUpdateButton />
         </Group>
 
         <Group position="apart" style={{ marginBottom: 5, marginTop: theme.spacing.sm }}>
           <Text size="sm" style={{ color: secondaryColor, lineHeight: 1.5 }}>Email: es.xiao93@gmail.com{/*email*/}</Text>
-          <Badge color="dark" variant="light">Update</Badge>
+          <UserUpdateButton />
         </Group>
 
         <Group position="apart" style={{ marginBottom: 5, marginTop: theme.spacing.sm }}>  
           <Text size="sm" style={{ color: secondaryColor, lineHeight: 1.5 }}>UserName: es.xiao93{/*username*/}</Text>
-          <Badge color="dark" variant="light">Update</Badge>
+          <UserUpdateButton />
         </Group>
 
         <Group position="apart" style={{ marginBottom: 5, marginTop: theme.spacing.sm }}>  
           <Text size="sm" style={{ color: secondaryColor, lineHeight: 1.5 }}>Password: *********{/*password*/}</Text>
-          <Badge color="dark" variant="light">Update</Badge>
+          <UserUpdateButton />
         </Group>
 
         <Group position="apart" style={{ marginBottom: 5, marginTop: theme.spacing.sm }}>
           <Text size="sm" style={{ color: secondaryColor, lineHeight: 1.5 }}>Date Of Birth: 11-27-1993{/*dob*/}</Text>
-          <Badge color="dark" variant="light">Update</Badge>
+          <UserUpdateButton />
         </Group>
       </Card>
     </div>

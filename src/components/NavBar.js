@@ -1,6 +1,6 @@
 import { IconButton } from "@mui/material";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import SupportAgentIcon from "@mui/icons-material/SupportAgent";
+import LoginIcon from '@mui/icons-material/Login';
+import HelpCenterIcon from '@mui/icons-material/HelpCenter';
 import HomeIcon from "@mui/icons-material/Home";
 import PersonIcon from '@mui/icons-material/Person';
 import React, { useState } from "react";
@@ -35,7 +35,7 @@ const NavBar = () => {
               trigger="hover"
               control={
                 <IconButton>
-                  <AccountCircleIcon />
+                  <LoginIcon />
                 </IconButton>
               }
             >
@@ -56,7 +56,7 @@ const NavBar = () => {
             <IconButton>
               {/* <Link
               to="/about" style={{ textDecoration: "none", color: "white" }}> */}
-              <SupportAgentIcon />
+              <HelpCenterIcon />
               {/* </Link> */}
             </IconButton>
           </Group>
