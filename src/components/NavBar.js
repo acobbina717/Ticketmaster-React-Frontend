@@ -54,10 +54,10 @@ const NavBar = () => {
             </Menu>
 
             <IconButton>
-              {/* <Link
-              to="/about" style={{ textDecoration: "none", color: "white" }}> */}
+              <Link
+              to="/help" style={{ textDecoration: "none", color: "black" }}>
               <HelpCenterIcon />
-              {/* </Link> */}
+              </Link>
             </IconButton>
           </Group>
         </div>

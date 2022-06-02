@@ -9,6 +9,7 @@ const EventContainer = ({ events }) => {
           <EventCard
             event_name={event.event_name}
             key={event.id}
+            id={event.id}
             image={event.image_url}
             btntxt={"Buy Ticket Now"}
             location={event.location}
