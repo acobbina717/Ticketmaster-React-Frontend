@@ -1,17 +1,18 @@
-import {
-  Grid,
-  Card,
-  Image,
-  Button,
-  Group,
-  Text,
-  useMantineTheme,
-  FloatingTooltip,
-} from "@mantine/core";
-import { IconStar, IconMessage } from "@tabler/icons";
-import { Link } from "react-router-dom";
+import React, {useState} from "react";
+//MANTINE AND TABLER CSS IMPORT
+import {Grid, Card, Image, Button, Group, Text, useMantineTheme, FloatingTooltip} from "@mantine/core";
+import { IconStar, IconMessage } from '@tabler/icons';
+//ROUTING IMPORT
+import {Link} from "react-router-dom";
 
 const EventCard = ({ id, image, event_name, location, btntxt }) => {
+  
+  const [isFavorited, setIsFavorited] = useState(true)
+
+  function handleFavorited () {
+    setIsFavorited(!isFavorited)
+  }
+  
   const theme = useMantineTheme();
 
   const secondaryColor =
@@ -41,10 +42,19 @@ const EventCard = ({ id, image, event_name, location, btntxt }) => {
               <IconMessage onClick={(e) => console.log("message clicked")} />
             </FloatingTooltip>
           </Link>
-
-          <FloatingTooltip label="Favorite" color="dark" position="top">
-            <IconStar onClick={(e) => console.log("favorite clicked")} />
+        >
+          <FloatingTooltip label="Review" color="dark" position="top">
+            <Link to="/eventreviewpage" style={{ textDecoration: "none", color: "black" }}>
+              <IconMessage onClick={(e) => console.log("message clicked")}/>
+            </Link>
           </FloatingTooltip>
+          <FloatingTooltip label="Favorite" color="dark" position="top">
+            {isFavorited ? (
+            <IconStar onClick={handleFavorited}/>
+            ) : (
+            <IconStar color="red" onClick={handleFavorited}/>
+            )}
+            </FloatingTooltip>
         </Group>
 
         <Button
@@ -52,7 +62,7 @@ const EventCard = ({ id, image, event_name, location, btntxt }) => {
           color="blue"
           fullWidth
           style={{ marginTop: 14 }}
-          onClick={(e) => console.log(event_name)}
+          onClick={(e) => console.log(id)}
         >
           {btntxt}
         </Button>

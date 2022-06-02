@@ -1,13 +1,12 @@
 import { IconButton } from "@mui/material";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import SupportAgentIcon from "@mui/icons-material/SupportAgent";
+import LoginIcon from '@mui/icons-material/Login';
+import HelpCenterIcon from '@mui/icons-material/HelpCenter';
 import HomeIcon from "@mui/icons-material/Home";
-import PersonIcon from '@mui/icons-material/Person';
+import PersonIcon from "@mui/icons-material/Person";
 import React, { useState } from "react";
 import { AppShell, Header, Group, Menu, useMantineTheme } from "@mantine/core";
 import { IconDoorEnter, IconAt } from "@tabler/icons";
-import {Link} from "react-router-dom";
-
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
   // const theme = useMantineTheme();
@@ -19,15 +18,17 @@ const NavBar = () => {
           <Group position="left" grow style={{ flexGrow: 1 }}>
             <IconButton>
               <Link to="/" style={{ textDecoration: "none", color: "black" }}>
-              <HomeIcon />
+                <HomeIcon />
               </Link>
             </IconButton>
             <IconButton>
-              <Link to="/userprofile" style={{ textDecoration: "none", color: "black" }}>
-              <PersonIcon />
+              <Link
+                to="/userprofile"
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                <PersonIcon />
               </Link>
             </IconButton>
-
           </Group>
 
           <Group position="right">
@@ -35,7 +36,7 @@ const NavBar = () => {
               trigger="hover"
               control={
                 <IconButton>
-                  <AccountCircleIcon />
+                  <LoginIcon />
                 </IconButton>
               }
             >
@@ -54,10 +55,10 @@ const NavBar = () => {
             </Menu>
 
             <IconButton>
-              {/* <Link
-              to="/about" style={{ textDecoration: "none", color: "white" }}> */}
-              <SupportAgentIcon />
-              {/* </Link> */}
+              <Link
+              to="/help" style={{ textDecoration: "none", color: "black" }}>
+              <HelpCenterIcon />
+              </Link>
             </IconButton>
           </Group>
         </div>
