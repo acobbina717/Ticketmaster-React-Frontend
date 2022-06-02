@@ -1,17 +1,10 @@
 import ReviewCard from "./ReviewCard";
 
-const ReviewContainer = ({ reviews }) => {
+const ReviewContainer = ({ events }) => {
   return (
     <>
-      {reviews.map((review) => {
-        return (
-          <ReviewCard
-            key={review.id}
-            user_id={review.user_id}
-            comment={review.comment}
-            rating={review.rating}
-          />
-        );
+      {events.map((review) => {
+        return <ReviewCard />;
       })}
     </>
   );

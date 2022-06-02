@@ -24,16 +24,15 @@ function App() {
 
   console.log(events);
 
+  // const getUsers = () => {
+  //   fetch("http://localhost:9292/users")
+  //     .then((res) => res.json())
+  //     .then((users_data) => setUsers(users_data));
+  // };
 
-  const getUsers = () => {
-    fetch("http://localhost:9292/users")
-      .then((res) => res.json())
-      .then((users_data) => setUsers(users_data));
-  };
-
-  useEffect(() => {
-    getUsers();
-  }, []);
+  // useEffect(() => {
+  //   getUsers();
+  // }, []);
 
   console.log(users);
 
@@ -46,21 +45,13 @@ function App() {
         <Route path="/userprofile" element={<UserProfile users={users} />} />
         <Route
           path="/events/:id"
-          element={<EventReviewPage events={events} />
-          }
+          element={<EventReviewPage events={events} />}
         />
-        <Route 
-          path="/eventreviewpage" 
-          element={
-            <EventReviewPage events={events} />
-          } 
+        <Route
+          path="/eventreviewpage"
+          element={<EventReviewPage events={events} />}
         />
-        <Route 
-          path="/help" 
-          element={
-            <Help />
-          } 
-        />
+        <Route path="/help" element={<Help />} />
       </Routes>
     </>
   );
