@@ -1,18 +1,26 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 //MANTINE AND TABLER CSS IMPORT
-import {Grid, Card, Image, Button, Group, Text, useMantineTheme, FloatingTooltip} from "@mantine/core";
-import { IconStar, IconMessage } from '@tabler/icons';
+import {
+  Grid,
+  Card,
+  Image,
+  Button,
+  Group,
+  Text,
+  useMantineTheme,
+  FloatingTooltip,
+} from "@mantine/core";
+import { IconStar, IconMessage } from "@tabler/icons";
 //ROUTING IMPORT
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const EventCard = ({ id, image, event_name, location, btntxt }) => {
-  
-  const [isFavorited, setIsFavorited] = useState(true)
+  const [isFavorited, setIsFavorited] = useState(true);
 
-  function handleFavorited () {
-    setIsFavorited(!isFavorited)
+  function handleFavorited() {
+    setIsFavorited(!isFavorited);
   }
-  
+
   const theme = useMantineTheme();
 
   const secondaryColor =
@@ -37,24 +45,18 @@ const EventCard = ({ id, image, event_name, location, btntxt }) => {
         </Text>
 
         <Group position="right">
-          <Link to={`/events/${id}`}>
-            <FloatingTooltip label="Review" color="dark" position="top">
-              <IconMessage onClick={(e) => console.log("message clicked")} />
-            </FloatingTooltip>
-          </Link>
-        >
           <FloatingTooltip label="Review" color="dark" position="top">
-            <Link to="/eventreviewpage" style={{ textDecoration: "none", color: "black" }}>
-              <IconMessage onClick={(e) => console.log("message clicked")}/>
+            <Link to={`/events/${id}`}>
+              <IconMessage onClick={(e) => console.log("message clicked")} />
             </Link>
           </FloatingTooltip>
           <FloatingTooltip label="Favorite" color="dark" position="top">
             {isFavorited ? (
-            <IconStar onClick={handleFavorited}/>
+              <IconStar onClick={handleFavorited} />
             ) : (
-            <IconStar color="red" onClick={handleFavorited}/>
+              <IconStar color="red" onClick={handleFavorited} />
             )}
-            </FloatingTooltip>
+          </FloatingTooltip>
         </Group>
 
         <Button
