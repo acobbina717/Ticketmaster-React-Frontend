@@ -38,6 +38,7 @@ const SignInForm = () => {
   });
 
   const submit = form.onSubmit((values) => console.log(values));
+  // console.log(form.values);
 
   return (
     <Box sx={{ maxWidth: 340 }} mx="auto">

@@ -1,27 +1,32 @@
 import React, { useEffect, useState } from "react";
-import { BackgroundImage, Center, Text, Box } from "@mantine/core";
-import ReviewContainer from "./ReviewContainer";
+import {
+  TextInput,
+  Checkbox,
+  BackgroundImage,
+  Center,
+  Text,
+  Box,
+  Card,
+  Textarea,
+  Badge,
+  Button,
+  Group,
+  useMantineTheme,
+} from "@mantine/core";
+import { useForm } from "@mantine/form";
+import ReviewCard from "./ReviewCard";
 import { useParams } from "react-router-dom";
 import NavBar from "./NavBar";
 import { EventAvailableRounded } from "@mui/icons-material";
+import SignInForm from "./SignInForm";
 
-const EventReviewPage = ({}) => {
-  //   const [reviews, setReviews] = useState([]);
+function EventReviewPage() {
   const [event, setEvent] = useState({ reviews: [] });
-
   const { id } = useParams();
-  console.log("id is", id);
-  console.log("event from event review page", event);
-  console.log(
-    "reviews from event review page",
-    event.reviews.map((review) => {
-      return review.comment;
-    })
-  );
 
-  const getEventId = () => {
+  const getEventReviews = () => {
     fetch(`http://localhost:9292/events/${id}`)
-      .then((res) => res.json())
+      .then((response) => response.json())
       .then((response) => {
         setEvent(response);
       })
@@ -29,8 +34,40 @@ const EventReviewPage = ({}) => {
   };
 
   useEffect(() => {
-    getEventId();
+    getEventReviews();
   }, []);
+
+  const reviewItem = event.reviews.map((review) => (
+    <ReviewCard key={review.id} review={review} id={review.id} />
+  ));
+
+  const form = useForm({
+    initialValues: {
+      comment: "",
+      event_id: parseInt(`${id}`),
+    },
+  });
+
+  const submit = form.onSubmit((values) => {
+    fetch("http://localhost:9292/reviews", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(values),
+    }).then(getEventReviews());
+    form.reset();
+  });
+  // console.log(form.values.event_id);
+
+  // function handleSubmit(e) {
+  //   e.preventDefault();
+
+  // const theme = useMantineTheme();
+
+  // const secondaryColor = theme.colorScheme === 'dark'
+  //   ? theme.colors.dark[1]
+  //   : theme.colors.gray[7];
 
   return (
     <>
@@ -55,11 +92,44 @@ const EventReviewPage = ({}) => {
           </Center>
         </BackgroundImage>
       </Box>
-      {event.reviews.map((review) => (
-        <h3 key={review.id}>{review.comment}</h3>
-      ))}
+
+      <div style={{ width: 340, margin: "auto" }}>
+        <Card shadow="sm" p="lg">
+          <Card.Section>
+            <Text size="sm" style={{ lineHeight: 1.5 }}></Text>
+            {reviewItem}
+            <Box sx={{ maxWidth: 300 }} mx="auto">
+              <form onSubmit={submit}>
+                <TextInput
+                  placeholder="comment..."
+                  {...form.getInputProps("comment")}
+                />
+
+                <Group position="right" mt="md">
+                  <Button type="submit">Submit</Button>
+                </Group>
+              </form>
+            </Box>
+          </Card.Section>
+        </Card>
+      </div>
     </>
   );
-};
+}
 
 export default EventReviewPage;
+
+{
+  /* <Text size="sm" style={{ color: secondaryColor, lineHeight: 1.5 }}> */
+}
+
+// console.log("id is", id);
+// //   console.log("event from event review page", events);
+// //   const currentEvent = events.filter((event) => {
+// //     console.log(event.id);
+// //     console.log(event);
+// //     return event.id === parseInt(id);
+// //   });
+
+// //   console.log("this is the event id", eventId[0].reviews[0].comment);
+// console.log("this is the eventId", eventId.reviews);
