@@ -15,14 +15,14 @@ function App() {
   const getEvents = () => {
     fetch("http://localhost:9292/events")
       .then((res) => res.json())
-      .then((events_data) => setEvents(events_data));
+      .then((events) => setEvents(events));
   };
 
   useEffect(() => {
     getEvents();
   }, []);
 
-  console.log(events);
+  // console.log(events);
 
   // const getUsers = () => {
   //   fetch("http://localhost:9292/users")

@@ -45,17 +45,8 @@ const EventCard = ({ id, image, event_name, location, btntxt }) => {
         </Text>
 
         <Group position="right">
-          <Link to={`/events/${id}`}>
-            <FloatingTooltip label="Review" color="dark" position="top">
-              <IconMessage onClick={(e) => console.log("message clicked")} />
-            </FloatingTooltip>
-          </Link>
-          >
           <FloatingTooltip label="Review" color="dark" position="top">
-            <Link
-              to="/eventreviewpage"
-              style={{ textDecoration: "none", color: "black" }}
-            >
+            <Link to={`/events/${id}`}>
               <IconMessage onClick={(e) => console.log("message clicked")} />
             </Link>
           </FloatingTooltip>
