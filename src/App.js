@@ -1,6 +1,7 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
 import Home from "./components/Home";
+import Reviews from "./components/Reviews";
 import UserProfile from "./components/UserProfile";
 import EventReviewPage from "./components/EventReviewPage";
 import Popup from "./components/Popup";
@@ -52,6 +53,7 @@ function App() {
           element={<EventReviewPage events={events} />}
         />
         <Route path="/help" element={<Help />} />
+        <Route path="/reviews/:id" element={<Reviews />} />
       </Routes>
     </>
   );

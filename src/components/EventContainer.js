@@ -11,7 +11,6 @@ const EventContainer = ({ events }) => {
             key={event.id}
             id={event.id}
             image={event.image_url}
-            btntxt={"Buy Ticket Now"}
             location={event.location}
           />
         );
