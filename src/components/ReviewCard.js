@@ -1,4 +1,6 @@
 import React from "react";
+
+import { Link } from "react-router-dom";
 import {
   Card,
   Textarea,
@@ -9,50 +11,35 @@ import {
   useMantineTheme,
 } from "@mantine/core";
 
-function ReviewCard({ review, id }) {
+function ReviewCard({ review, onDeleteReview }) {
   //------------------------
   // Function to delete a review
 
-  // function handleDeleteClick() {
-  //   fetch(`http://localhost:9292/reviews/${id}`, {
-  //     method: "DELETE",
-  //   });
+  function handleDeleteClick() {
+    fetch(`http://localhost:9292/reviews/${review.id}`, {
+      method: "DELETE",
+    });
 
-  //   onDeleteReview(id);
-  // }
+    onDeleteReview(review.id);
+  }
   //---------------------
-
-  //----------------------------
-  // Function to edit a review
-
-  // function handleReviewEdit(e) {
-  //   e.preventDefault();
-
-  //   fetch("http://localhost:9292/reviews", {
-  //     method: "PATCH",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({
-  //       event_id: `${id}`,
-  //       comment: comment,
-  //     }),
-  //   })
-  //     .then((response) => response.json())
-  //     .then((updatedReview) => console.log(updatedReview));
-  // }
-
-  //---------------------------------
 
   return (
     <>
       <Card>
         <Text size="sm" style={{ lineHeight: 1.5 }}>
           {review.comment}
-          <Badge position="right" color="dark" variant="light">
-            Edit
-          </Badge>
-          <Badge position="right" color="dark" variant="light">
+          <Link to={`/reviews/${review.id}`}>
+            <Badge position="right" color="dark" variant="light">
+              Edit
+            </Badge>
+          </Link>
+          <Badge
+            onClick={handleDeleteClick}
+            position="right"
+            color="dark"
+            variant="light"
+          >
             Delete
           </Badge>
         </Text>

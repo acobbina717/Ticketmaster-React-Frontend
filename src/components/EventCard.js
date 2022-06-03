@@ -58,16 +58,6 @@ const EventCard = ({ id, image, event_name, location, btntxt }) => {
             )}
           </FloatingTooltip>
         </Group>
-
-        <Button
-          variant="light"
-          color="blue"
-          fullWidth
-          style={{ marginTop: 14 }}
-          onClick={(e) => console.log(id)}
-        >
-          {btntxt}
-        </Button>
       </Card>
     </Grid.Col>
   );
